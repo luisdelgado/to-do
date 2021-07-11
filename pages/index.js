@@ -1,17 +1,23 @@
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+
+const useStyles = makeStyles({
+  rectangle: {
+    height: "25vh",
+    minHeight: "150px",
+  },
+});
 
 export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>to-do</title>
-        <meta name="description" content="Seleção Front-End 2021-3Q" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+  const classes = useStyles();
 
+  return (
+    <div>
       <main>
+        <AppBar position="static" className={classes.rectangle}>
+          <Toolbar></Toolbar>
+        </AppBar>
         <h1>to-do</h1>
       </main>
 
