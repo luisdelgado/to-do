@@ -8,16 +8,15 @@ import { Grid, Typography } from "@material-ui/core";
 const useStyles = makeStyles({
   appBar: {
     height: "30vh",
-    minHeight: "150px",
   },
   appBar__toolbar: {
     justifyContent: "center",
   },
   toolbar__figure: {
-    margin: "30px 0px",
+    margin: "5vh 0px",
   },
   grid: {
-    marginTop: "-80px",
+    marginTop: "-13vh",
   },
   grid__card: {
     width: "100%",
