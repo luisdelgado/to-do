@@ -28,6 +28,10 @@ const useStyles = makeStyles({
     textAlign: "center",
     paddingTop: "16px",
   },
+  figure__div: {
+    width: "100%",
+    padding: "0 46px",
+  },
 });
 
 export default function Home() {
@@ -56,6 +60,16 @@ export default function Home() {
                   <Typography variant="h1">
                     Nenhuma tarefa criada ainda.
                   </Typography>
+                  <figure className={classes.toolbar__figure}>
+                    <div className={classes.figure__div}>
+                      <Image
+                        src="/assets/illustration_empty_state.svg"
+                        width="390px"
+                        height="182px"
+                        alt="nenuma atividade registrada"
+                      />
+                    </div>
+                  </figure>
                 </div>
               </Grid>
             </Card>
