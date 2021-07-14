@@ -14,6 +14,12 @@ const theme = createTheme({
       lineHeight: "29px",
       color: "#191847",
     },
+    body1: {
+      fontWeight: 400,
+      fontSize: 16,
+      lineHeight: "19px",
+      color: "#191847",
+    },
   },
 });
 

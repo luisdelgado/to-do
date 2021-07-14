@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   appBar__toolbar: {
     justifyContent: "center",
   },
-  toolbar__figure: {
+  figure: {
     margin: "5vh 0px",
   },
   grid: {
@@ -23,7 +23,10 @@ const useStyles = makeStyles({
     borderRadius: "12px",
     backgroundColor: "#FFFFFF",
   },
-  card__div: {
+  card__grid: {
+    padding: "25px",
+  },
+  grid__div: {
     width: "100%",
     textAlign: "center",
     paddingTop: "16px",
@@ -42,7 +45,7 @@ export default function Home() {
       <main>
         <AppBar position="static" className={classes.appBar}>
           <Toolbar className={classes.appBar__toolbar}>
-            <figure className={classes.toolbar__figure}>
+            <figure className={classes.figure}>
               <Image
                 src="/assets/logo.svg"
                 width="104"
@@ -55,12 +58,12 @@ export default function Home() {
         <Grid container justifyContent="center">
           <Grid className={classes.grid} item xs={8}>
             <Card className={classes.grid__card}>
-              <Grid container item xs={12}>
-                <div className={classes.card__div}>
+              <Grid className={classes.card__grid} container item xs={12}>
+                <div className={classes.grid__div}>
                   <Typography variant="h1">
                     Nenhuma tarefa criada ainda.
                   </Typography>
-                  <figure className={classes.toolbar__figure}>
+                  <figure className={classes.figure}>
                     <div className={classes.figure__div}>
                       <Image
                         src="/assets/illustration_empty_state.svg"
@@ -71,6 +74,9 @@ export default function Home() {
                     </div>
                   </figure>
                 </div>
+                <Typography variant="body1">
+                  Que tal organizar as ideias criando uma lista agora?
+                </Typography>
               </Grid>
             </Card>
           </Grid>
