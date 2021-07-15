@@ -68,7 +68,7 @@ export default function Home() {
         <Grid container justifyContent="center">
           <Grid className={classes.grid} item xs={8}>
             <Card className={classes.grid__card}>
-              <Grid className={classes.card__grid} container item xs={12}>
+              <Grid className={classes.card__grid} xs={12}>
                 {/* Nenhuma tarefa criada ainda */}
                 {pendencies.length === 0 && (
                   <div>
@@ -95,15 +95,23 @@ export default function Home() {
                 )}
 
                 {/* Tarefas pendentes */}
-                {pendencies?.map((pending) => (
-                  <span key={pending.id}>{pending.name}</span>
-                ))}
+                {pendencies.length > 0 && (
+                  <>
+                    {pendencies.map((pending) => (
+                      <span key={pending.id}>{pending.name}</span>
+                    ))}
+                    <NewTask addTask={addTask} />
+                  </>
+                )}
 
                 {/* Tarefas completeadas */}
-                {completed?.map((completed) => (
-                  <span key={completed.id}>{completed.name}</span>
-                ))}
-                <NewTask addTask={addTask} />
+                {pendencies.length === 0 && completed.length > 0 ? (
+                  <>
+                    {completed.map((completed) => (
+                      <span key={completed.id}>{completed.name}</span>
+                    ))}
+                  </>
+                ) : null}
               </Grid>
             </Card>
           </Grid>
