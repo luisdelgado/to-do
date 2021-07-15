@@ -5,6 +5,7 @@ import Card from "@material-ui/core/Card";
 import Image from "next/image";
 import { Grid, Typography } from "@material-ui/core";
 import NewTask from "../components/newTask";
+import { useState } from "react";
 
 const useStyles = makeStyles({
   appBar: {
@@ -39,12 +40,12 @@ const useStyles = makeStyles({
 });
 
 export default function Home() {
+  const [pendencies, setPendencies] = useState([]);
   const classes = useStyles();
-  const pending = [];
 
   const addTask = (newActivity) => {
-    pending.push(newActivity);
-    console.log(pending);
+    setPendencies((pendencies) => [...pendencies, newActivity]);
+    console.log(pendencies);
   };
 
   return (
@@ -68,7 +69,7 @@ export default function Home() {
             <Card className={classes.grid__card}>
               <Grid className={classes.card__grid} container item xs={12}>
                 {/* Nenhuma tarefa criada ainda */}
-                {pending.length === 0 && (
+                {pendencies.length === 0 && (
                   <div>
                     <div className={classes.grid__div}>
                       <Typography variant="h1">
@@ -91,6 +92,12 @@ export default function Home() {
                     <NewTask addTask={addTask} />
                   </div>
                 )}
+
+                {/* Tarefas pendentes */}
+                {pendencies?.map((pending) => (
+                  <span key={pending.id}>{pending.name}</span>
+                ))}
+                <NewTask addTask={addTask} />
               </Grid>
             </Card>
           </Grid>
