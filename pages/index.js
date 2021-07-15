@@ -41,6 +41,7 @@ const useStyles = makeStyles({
 
 export default function Home() {
   const [pendencies, setPendencies] = useState([]);
+  const [completed, setCompleted] = useState([]);
   const classes = useStyles();
 
   const addTask = (newActivity) => {
@@ -96,6 +97,11 @@ export default function Home() {
                 {/* Tarefas pendentes */}
                 {pendencies?.map((pending) => (
                   <span key={pending.id}>{pending.name}</span>
+                ))}
+
+                {/* Tarefas completeadas */}
+                {completed?.map((completed) => (
+                  <span key={completed.id}>{completed.name}</span>
                 ))}
                 <NewTask addTask={addTask} />
               </Grid>
