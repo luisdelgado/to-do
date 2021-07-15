@@ -29,7 +29,7 @@ export default function NewTask({ addTask }) {
       <Grid item>
         <span className={classes.dot}></span>
       </Grid>
-      <Grid item>
+      <Grid item xs>
         <TextField
           placeholder="Adicione uma tarefa"
           value={name}
@@ -38,6 +38,7 @@ export default function NewTask({ addTask }) {
             if (event.key == "Enter")
               addTask({ id: 1, name: name, pending: true });
           }}
+          fullWidth
         />
       </Grid>
     </Grid>
