@@ -5,7 +5,6 @@ import Card from "@material-ui/core/Card";
 import Image from "next/image";
 import { Grid, Typography } from "@material-ui/core";
 import NewTask from "../components/newTask";
-import { useState } from "react";
 
 const useStyles = makeStyles({
   appBar: {
@@ -41,7 +40,12 @@ const useStyles = makeStyles({
 
 export default function Home() {
   const classes = useStyles();
-  const [pending, setPending] = useState([]);
+  const pending = [];
+
+  const addTask = (newActivity) => {
+    pending.push(newActivity);
+    console.log(pending);
+  };
 
   return (
     <div>
@@ -84,7 +88,7 @@ export default function Home() {
                     <Typography variant="body1">
                       Que tal organizar as ideias criando uma lista agora?
                     </Typography>
-                    <NewTask />
+                    <NewTask addTask={addTask} />
                   </div>
                 )}
               </Grid>

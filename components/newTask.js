@@ -1,5 +1,7 @@
 import { Grid, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { useState } from "react";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles({
   grid: {
@@ -15,8 +17,13 @@ const useStyles = makeStyles({
   },
 });
 
-export default function NewTask() {
+export default function NewTask({ addTask }) {
   const classes = useStyles();
+  const [name, setName] = useState("");
+  const handleChange = (event) => {
+    setName(event.target.value);
+  };
+
   return (
     <Grid className={classes.grid} container spacing={1} alignItems="center">
       <Grid item>
@@ -25,11 +32,18 @@ export default function NewTask() {
       <Grid item>
         <TextField
           placeholder="Adicione uma tarefa"
+          value={name}
+          onChange={handleChange}
           onKeyPress={(event) => {
-            if (event.key == "Enter") console.log("enter");
+            if (event.key == "Enter")
+              addTask({ id: 1, name: name, pending: true });
           }}
         />
       </Grid>
     </Grid>
   );
 }
+
+NewTask.propTypes = {
+  addtask: PropTypes.func.isRequired,
+};
