@@ -4,6 +4,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Card from "@material-ui/core/Card";
 import Image from "next/image";
 import { Grid, Typography } from "@material-ui/core";
+import NewTask from "../components/newTask";
+import { useState } from "react";
 
 const useStyles = makeStyles({
   appBar: {
@@ -39,6 +41,7 @@ const useStyles = makeStyles({
 
 export default function Home() {
   const classes = useStyles();
+  const [pending, setPending] = useState([]);
 
   return (
     <div>
@@ -55,28 +58,35 @@ export default function Home() {
             </figure>
           </Toolbar>
         </AppBar>
+
         <Grid container justifyContent="center">
           <Grid className={classes.grid} item xs={8}>
             <Card className={classes.grid__card}>
               <Grid className={classes.card__grid} container item xs={12}>
-                <div className={classes.grid__div}>
-                  <Typography variant="h1">
-                    Nenhuma tarefa criada ainda.
-                  </Typography>
-                  <figure className={classes.figure}>
-                    <div className={classes.figure__div}>
-                      <Image
-                        src="/assets/illustration_empty_state.svg"
-                        width="390px"
-                        height="182px"
-                        alt="nenuma atividade registrada"
-                      />
+                {/* Nenhuma tarefa criada ainda */}
+                {pending.length === 0 && (
+                  <div>
+                    <div className={classes.grid__div}>
+                      <Typography variant="h1">
+                        Nenhuma tarefa criada ainda.
+                      </Typography>
+                      <figure className={classes.figure}>
+                        <div className={classes.figure__div}>
+                          <Image
+                            src="/assets/illustration_empty_state.svg"
+                            width="390px"
+                            height="182px"
+                            alt="nenuma atividade registrada"
+                          />
+                        </div>
+                      </figure>
                     </div>
-                  </figure>
-                </div>
-                <Typography variant="body1">
-                  Que tal organizar as ideias criando uma lista agora?
-                </Typography>
+                    <Typography variant="body1">
+                      Que tal organizar as ideias criando uma lista agora?
+                    </Typography>
+                    <NewTask />
+                  </div>
+                )}
               </Grid>
             </Card>
           </Grid>
