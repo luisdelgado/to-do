@@ -1,4 +1,4 @@
-import { Grid, TextField } from "@material-ui/core";
+import { Grid, TextField, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useState } from "react";
 import PropTypes from "prop-types";
@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 const useStyles = makeStyles({
   grid: {
     marginTop: "20px",
-    opacity: "0.4",
   },
   dot: {
     height: "28px",
@@ -17,7 +16,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function NewTask({ addTask }) {
+export default function NewTask({ pendingTask, completeTask }) {
   const classes = useStyles();
   const [name, setName] = useState("");
   const handleChange = (event) => {
@@ -27,26 +26,19 @@ export default function NewTask({ addTask }) {
   return (
     <Grid className={classes.grid} container spacing={1} alignItems="center">
       <Grid item>
-        <span className={classes.dot}></span>
+        <span
+          className={classes.dot}
+          onClick={() => completeTask(pendingTask)}
+        ></span>
       </Grid>
       <Grid item xs>
-        <TextField
-          placeholder="Adicione uma tarefa"
-          value={name}
-          onChange={handleChange}
-          onKeyPress={(event) => {
-            if (event.key == "Enter") {
-              addTask({ id: 1, name: name, pending: true });
-              setName("");
-            }
-          }}
-          fullWidth
-        />
+        <Typography variant="body1">{pendingTask.name}</Typography>
       </Grid>
     </Grid>
   );
 }
 
 NewTask.propTypes = {
-  addTask: PropTypes.func.isRequired,
+  pendingTask: PropTypes.object.isRequired,
+  completeTask: PropTypes.func.isRequired,
 };

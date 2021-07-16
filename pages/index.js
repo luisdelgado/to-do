@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Grid, Typography } from "@material-ui/core";
 import NewTask from "../components/newTask";
 import { useState } from "react";
+import PendingTask from "../components/pendingTask";
 
 const useStyles = makeStyles({
   appBar: {
@@ -26,7 +27,7 @@ const useStyles = makeStyles({
     backgroundColor: "#FFFFFF",
   },
   card__grid: {
-    padding: "25px",
+    padding: "4vh 4vh",
   },
   grid__div: {
     width: "100%",
@@ -44,8 +45,17 @@ export default function Home() {
   const [completed, setCompleted] = useState([]);
   const classes = useStyles();
 
-  const addTask = (newActivity) => {
-    setPendencies((pendencies) => [...pendencies, newActivity]);
+  const addTask = (newTask) => {
+    setPendencies((pendencies) => [...pendencies, newTask]);
+    console.log(pendencies);
+  };
+
+  const completeTask = (task) => {
+    console.log(task);
+    const newPendencies = pendencies.filter(
+      (pending) => pending.name !== task.name
+    );
+    setPendencies(newPendencies);
     console.log(pendencies);
   };
 
@@ -68,7 +78,7 @@ export default function Home() {
         <Grid container justifyContent="center">
           <Grid className={classes.grid} item xs={8}>
             <Card className={classes.grid__card}>
-              <Grid className={classes.card__grid} xs={12}>
+              <Grid className={classes.card__grid} item xs={12}>
                 {/* Nenhuma tarefa criada ainda */}
                 {pendencies.length === 0 && (
                   <div>
@@ -97,8 +107,15 @@ export default function Home() {
                 {/* Tarefas pendentes */}
                 {pendencies.length > 0 && (
                   <>
+                    <Typography variant="body1">
+                      Pendente ({pendencies.length})
+                    </Typography>
                     {pendencies.map((pending) => (
-                      <span key={pending.id}>{pending.name}</span>
+                      <PendingTask
+                        key={pending.name}
+                        pendingTask={pending}
+                        completeTask={completeTask}
+                      />
                     ))}
                     <NewTask addTask={addTask} />
                   </>
