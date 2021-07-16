@@ -51,7 +51,7 @@ export default function Home() {
 
   const addTask = (task) => {
     // Atualizando última modificação da nova task
-    task.lastChange = +new Date();
+    (task.pending = true), (task.lastChange = +new Date());
 
     // Removendo tarefa de feitas
     const newCompleted = completed.filter(
@@ -66,7 +66,7 @@ export default function Home() {
 
   const completeTask = (task) => {
     // Atualizando última modificação da nova task
-    task.lastChange = +new Date();
+    (task.pending = false), (task.lastChange = +new Date());
 
     // Removendo tarefa de pendências
     const newPendencies = pendencies.filter(
@@ -174,7 +174,7 @@ export default function Home() {
                       className={classes.grid__typography}
                       variant="body1"
                     >
-                      Feito({completed.length})
+                      Feito ({completed.length})
                     </Typography>
                     {completed
                       .map((complete) => (
