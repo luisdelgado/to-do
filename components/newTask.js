@@ -49,7 +49,6 @@ export default function NewTask({ addTask }) {
                 id: uuidv4(),
                 name: name,
                 pending: true,
-                date: +new Date(),
               });
               setName("");
             }

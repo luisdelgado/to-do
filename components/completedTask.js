@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function NewTask({ task, completeTask }) {
+export default function CompletedTask({ task, addTask }) {
   const classes = useStyles();
   const [name, setName] = useState("");
   const handleChange = (event) => {
@@ -26,16 +26,18 @@ export default function NewTask({ task, completeTask }) {
   return (
     <Grid className={classes.grid} container spacing={1} alignItems="center">
       <Grid item>
-        <span className={classes.dot} onClick={() => completeTask(task)}></span>
+        <span className={classes.dot} onClick={() => addTask(task)}></span>
       </Grid>
       <Grid item xs>
-        <Typography variant="body1">{task.name}</Typography>
+        <Typography variant="body1">
+          <strike>{task.name}</strike>
+        </Typography>
       </Grid>
     </Grid>
   );
 }
 
-NewTask.propTypes = {
+CompletedTask.propTypes = {
   task: PropTypes.object.isRequired,
-  completeTask: PropTypes.func.isRequired,
+  addTask: PropTypes.func.isRequired,
 };
