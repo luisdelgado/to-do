@@ -26,7 +26,7 @@ function uuidv4() {
   );
 }
 
-export default function NewTask({ addTask }) {
+export default function NewTask({ placeholder, addTask }) {
   const classes = useStyles();
   const [name, setName] = useState("");
   const handleChange = (event) => {
@@ -40,7 +40,7 @@ export default function NewTask({ addTask }) {
       </Grid>
       <Grid item xs>
         <TextField
-          placeholder="Adicione uma tarefa"
+          placeholder={placeholder}
           value={name}
           onChange={handleChange}
           onKeyPress={(event) => {
@@ -60,5 +60,6 @@ export default function NewTask({ addTask }) {
 }
 
 NewTask.propTypes = {
+  placeholder: PropTypes.string.isRequired,
   addTask: PropTypes.func.isRequired,
 };

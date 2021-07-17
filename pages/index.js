@@ -124,7 +124,7 @@ export default function Home() {
             <Card className={classes.grid__card}>
               <Grid className={classes.card__grid} item xs={12}>
                 {/* Nenhuma tarefa criada ainda */}
-                {pendencies.length === 0 && (
+                {(pendencies.length === 0 && completed.length === 0) && (
                   <div>
                     <div className={classes.grid__div}>
                       <Typography variant="h1">
@@ -136,7 +136,7 @@ export default function Home() {
                             src="/assets/illustration_empty_state.svg"
                             width="390px"
                             height="182px"
-                            alt="nenuma atividade registrada"
+                            alt="não há TO-DOs na lista ainda"
                           />
                         </div>
                       </figure>
@@ -144,7 +144,10 @@ export default function Home() {
                     <Typography variant="body1">
                       Que tal organizar as ideias criando uma lista agora?
                     </Typography>
-                    <NewTask addTask={addTask} />
+                    <NewTask
+                      placeholder="Um passo de cada vez"
+                      addTask={addTask}
+                    />
                   </div>
                 )}
 
@@ -163,13 +166,40 @@ export default function Home() {
                         />
                       ))
                       .sort(orderByOldest)}
-                    <NewTask addTask={addTask} />
+                    <NewTask
+                      placeholder="Cuidado com o Burnout, viu?"
+                      addTask={addTask}
+                    />
                   </>
                 )}
 
                 {/* Tarefas completeadas */}
                 {completed.length > 0 ? (
                   <>
+                    {pendencies.length === 0 && (
+                      <div>
+                        <div className={classes.grid__div}>
+                          <Typography variant="h1">Tudo pronto!</Typography>
+                          <figure className={classes.figure}>
+                            <div className={classes.figure__div}>
+                              <Image
+                                src="/assets/illustration_success.svg"
+                                width="390px"
+                                height="182px"
+                                alt="parabenizando o usuário por ter completado todos os itens"
+                              />
+                            </div>
+                          </figure>
+                        </div>
+                        <Typography variant="body1">
+                          Sensação de dever cumprido. Que tal um café agora?
+                        </Typography>
+                        <NewTask
+                          placeholder="Pera, tem mais uma coisa"
+                          addTask={addTask}
+                        />
+                      </div>
+                    )}
                     <Typography
                       className={classes.grid__typography}
                       variant="body1"
