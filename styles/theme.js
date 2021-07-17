@@ -20,6 +20,12 @@ const theme = createTheme({
       lineHeight: "19px",
       color: "#191847",
     },
+    body2: {
+      fontWeight: 400,
+      fontSize: 12,
+      lineHeight: "14px",
+      color: "#191847",
+    },
   },
 });
 

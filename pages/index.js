@@ -208,12 +208,11 @@ export default function Home() {
         <footer className={classes.footer}>
           <Typography variant="body2">
             Um teste projetado pela <span className={classes.span}>Guava</span>
-            <br />
-            <span className={classes.spanIllustrations}>
-              Ilustrações por <span className={classes.span}>Open Doodles</span>{" "}
-              | Inter UI Font Family por{" "}
-              <span className={classes.span}>Rasmus Andersson</span>
-            </span>
+          </Typography>
+          <Typography variant="body2" className={classes.spanIllustrations}>
+            Ilustrações por <span className={classes.span}>Open Doodles</span> |
+            Inter UI Font Family por{" "}
+            <span className={classes.span}>Rasmus Andersson</span>
           </Typography>
         </footer>
       </main>
