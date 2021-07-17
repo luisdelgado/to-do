@@ -88,7 +88,6 @@ export default function Home() {
     if (a.props.task.lastChange < b.props.task.lastChange) {
       return -1;
     }
-    // a must be equal to b
     return 0;
   }
 
@@ -100,7 +99,6 @@ export default function Home() {
     if (a.props.task.lastChange > b.props.task.lastChange) {
       return -1;
     }
-    // a must be equal to b
     return 0;
   }
 
@@ -124,15 +122,16 @@ export default function Home() {
           <Grid className={classes.grid} item xs={8}>
             <Card className={classes.grid__card}>
               <Grid className={classes.card__grid} item xs={12}>
-              
                 {/* Nenhuma tarefa criada ainda */}
-                {(pendencies.length === 0 && completed.length === 0) && (
-                  <ImageState title="Nenhuma tarefa criada ainda." 
+                {pendencies.length === 0 && completed.length === 0 && (
+                  <ImageState
+                    title="Nenhuma tarefa criada ainda."
                     image="/assets/illustration_empty_state.svg"
-                    altImage="não há TO-DOs na lista ainda" 
+                    altImage="não há TO-DOs na lista ainda"
                     suggestion="Que tal organizar as ideias criando uma lista agora?"
-                    placeholderInput="Um passo de cada vez" 
-                    addTask={addTask} />
+                    placeholderInput="Um passo de cada vez"
+                    addTask={addTask}
+                  />
                 )}
 
                 {/* Tarefas pendentes */}
@@ -161,28 +160,14 @@ export default function Home() {
                 {completed.length > 0 ? (
                   <>
                     {pendencies.length === 0 && (
-                      <div>
-                        <div className={classes.grid__div}>
-                          <Typography variant="h1">Tudo pronto!</Typography>
-                          <figure className={classes.figure}>
-                            <div className={classes.figure__div}>
-                              <Image
-                                src="/assets/illustration_success.svg"
-                                width="390px"
-                                height="182px"
-                                alt="parabenizando o usuário por ter completado todos os itens"
-                              />
-                            </div>
-                          </figure>
-                        </div>
-                        <Typography variant="body1">
-                          Sensação de dever cumprido. Que tal um café agora?
-                        </Typography>
-                        <NewTask
-                          placeholder="Pera, tem mais uma coisa"
-                          addTask={addTask}
-                        />
-                      </div>
+                      <ImageState
+                        title="Tudo pronto!"
+                        image="/assets/illustration_success.svg"
+                        altImage="parabenizando o usuário por ter completado todos os itens"
+                        suggestion="Sensação de dever cumprido. Que tal um café agora?"
+                        placeholderInput="Pera, tem mais uma coisa"
+                        addTask={addTask}
+                      />
                     )}
                     <Typography
                       className={classes.grid__typography}
