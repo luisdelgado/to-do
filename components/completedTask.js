@@ -19,7 +19,7 @@ const useStyles = makeStyles({
   dot__figure: {
     margin: "0",
     height: "28px",
-    paddingTop: "3px",
+    paddingTop: "6px",
   },
 });
 

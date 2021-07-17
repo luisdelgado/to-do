@@ -118,21 +118,21 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <main>
-        <AppBar position="static" className={classes.appBar}>
-          <Toolbar className={classes.appBar__toolbar}>
-            <figure className={classes.figure}>
-              <Image
-                src="/assets/logo.svg"
-                width="104"
-                height="34px"
-                alt="to-do logo"
-              />
-            </figure>
-          </Toolbar>
-        </AppBar>
+    <>
+      <AppBar position="static" className={classes.appBar}>
+        <Toolbar className={classes.appBar__toolbar}>
+          <figure className={classes.figure}>
+            <Image
+              src="/assets/logo.svg"
+              width="104"
+              height="34px"
+              alt="to-do logo"
+            />
+          </figure>
+        </Toolbar>
+      </AppBar>
 
+      <main>
         <Grid container justifyContent="center">
           <Grid className={classes.grid} item xs={8}>
             <Card className={classes.grid__card}>
@@ -205,30 +205,18 @@ export default function Home() {
             </Card>
           </Grid>
         </Grid>
-        <footer className={classes.footer}>
-          <Typography variant="body2">
-            Um teste projetado pela <span className={classes.span}>Guava</span>
-          </Typography>
-          <Typography variant="body2" className={classes.spanIllustrations}>
-            Ilustrações por <span className={classes.span}>Open Doodles</span> |
-            Inter UI Font Family por{" "}
-            <span className={classes.span}>Rasmus Andersson</span>
-          </Typography>
-        </footer>
       </main>
 
-      <footer>
-        <p>
-          Um teste projetado pela{" "}
-          <a
-            href="https://guava.software/"
-            target="_blank"
-            rel="noreferrer license"
-          >
-            Guava
-          </a>
-        </p>
+      <footer className={classes.footer}>
+        <Typography variant="body2">
+          Um teste projetado pela <span className={classes.span}>Guava</span>
+        </Typography>
+        <Typography variant="body2" className={classes.spanIllustrations}>
+          Ilustrações por <span className={classes.span}>Open Doodles</span> |
+          Inter UI Font Family por{" "}
+          <span className={classes.span}>Rasmus Andersson</span>
+        </Typography>
       </footer>
-    </div>
+    </>
   );
 }
