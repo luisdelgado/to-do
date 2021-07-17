@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     marginTop: "20px",
     opacity: "0.4",
   },
-  dot: {
+  grid__dot: {
     height: "28px",
     width: "28px",
     border: "#191847 solid 1px",
@@ -36,7 +36,7 @@ export default function NewTask({ addTask }) {
   return (
     <Grid className={classes.grid} container spacing={1} alignItems="center">
       <Grid item>
-        <span className={classes.dot}></span>
+        <span className={classes.grid__dot}></span>
       </Grid>
       <Grid item xs>
         <TextField
