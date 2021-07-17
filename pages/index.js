@@ -45,6 +45,19 @@ const useStyles = makeStyles({
   grid__typography: {
     marginTop: "4vh",
   },
+  footer: {
+    marginTop: "20px",
+    textAlign: "center",
+  },
+  span: {
+    color: "#2D43FF",
+  },
+  spanIllustrations: {
+    marginTop: "10px",
+    fontWeight: 400,
+    fontSize: 10,
+    lineHeight: "12px",
+  },
 });
 
 export default function Home() {
@@ -192,7 +205,17 @@ export default function Home() {
             </Card>
           </Grid>
         </Grid>
-        <h1>to-do</h1>
+        <footer className={classes.footer}>
+          <Typography variant="body2">
+            Um teste projetado pela <span className={classes.span}>Guava</span>
+            <br />
+            <span className={classes.spanIllustrations}>
+              Ilustrações por <span className={classes.span}>Open Doodles</span>{" "}
+              | Inter UI Font Family por{" "}
+              <span className={classes.span}>Rasmus Andersson</span>
+            </span>
+          </Typography>
+        </footer>
       </main>
 
       <footer>
