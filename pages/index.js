@@ -8,6 +8,7 @@ import NewTask from "../components/newTask";
 import { useState } from "react";
 import PendingTask from "../components/pendingTask";
 import CompletedTask from "../components/completedTask";
+import ImageState from "../components/imageState";
 
 const useStyles = makeStyles({
   appBar: {
@@ -123,32 +124,15 @@ export default function Home() {
           <Grid className={classes.grid} item xs={8}>
             <Card className={classes.grid__card}>
               <Grid className={classes.card__grid} item xs={12}>
+              
                 {/* Nenhuma tarefa criada ainda */}
                 {(pendencies.length === 0 && completed.length === 0) && (
-                  <div>
-                    <div className={classes.grid__div}>
-                      <Typography variant="h1">
-                        Nenhuma tarefa criada ainda.
-                      </Typography>
-                      <figure className={classes.figure}>
-                        <div className={classes.figure__div}>
-                          <Image
-                            src="/assets/illustration_empty_state.svg"
-                            width="390px"
-                            height="182px"
-                            alt="não há TO-DOs na lista ainda"
-                          />
-                        </div>
-                      </figure>
-                    </div>
-                    <Typography variant="body1">
-                      Que tal organizar as ideias criando uma lista agora?
-                    </Typography>
-                    <NewTask
-                      placeholder="Um passo de cada vez"
-                      addTask={addTask}
-                    />
-                  </div>
+                  <ImageState title="Nenhuma tarefa criada ainda." 
+                    image="/assets/illustration_empty_state.svg"
+                    altImage="não há TO-DOs na lista ainda" 
+                    suggestion="Que tal organizar as ideias criando uma lista agora?"
+                    placeholderInput="Um passo de cada vez" 
+                    addTask={addTask} />
                 )}
 
                 {/* Tarefas pendentes */}
