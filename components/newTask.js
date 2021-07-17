@@ -44,7 +44,7 @@ export default function NewTask({ placeholder, addTask }) {
           value={name}
           onChange={handleChange}
           onKeyPress={(event) => {
-            if (event.key == "Enter") {
+            if (name.length > 0 && event.key == "Enter") {
               addTask({
                 id: uuidv4(),
                 name: name,
