@@ -54,6 +54,7 @@ const useStyles = makeStyles({
   },
   spanIllustrations: {
     marginTop: "10px",
+    marginBottom: "20px",
     fontWeight: 400,
     fontSize: 10,
     lineHeight: "12px",
