@@ -22,6 +22,8 @@ const useStyles = makeStyles({
   },
   grid: {
     marginTop: "-13vh",
+    minWidth: "320px",
+    maxWidth: "800px",
   },
   grid__card: {
     width: "100%",
