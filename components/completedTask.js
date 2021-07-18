@@ -23,13 +23,16 @@ const useStyles = makeStyles({
   },
 });
 
-export default function CompletedTask({ task, addTask }) {
+export default function CompletedTask({ task, updatePendingTask }) {
   const classes = useStyles();
 
   return (
     <Grid className={classes.grid} container spacing={1} alignItems="center">
       <Grid item>
-        <span className={classes.grid__dot} onClick={() => addTask(task)}>
+        <span
+          className={classes.grid__dot}
+          onClick={() => updatePendingTask(task)}
+        >
           <figure className={classes.dot__figure}>
             <Image
               src="/assets/check.svg"
@@ -51,5 +54,5 @@ export default function CompletedTask({ task, addTask }) {
 
 CompletedTask.propTypes = {
   task: PropTypes.object.isRequired,
-  addTask: PropTypes.func.isRequired,
+  updatePendingTask: PropTypes.func.isRequired,
 };

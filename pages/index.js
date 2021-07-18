@@ -9,6 +9,8 @@ import { useState } from "react";
 import PendingTask from "../components/pendingTask";
 import CompletedTask from "../components/completedTask";
 import ImageState from "../components/imageState";
+import fire from "../config/fire-config";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles({
   appBar: {
@@ -61,24 +63,28 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Home() {
-  const [pendencies, setPendencies] = useState([]);
+export default function Home({ loadTasks }) {
+  const [pendencies, setPendencies] = useState(
+    loadTasks.filter((task) => task.pending)
+  );
   const [completed, setCompleted] = useState([]);
   const classes = useStyles();
 
   const addTask = (task) => {
+    // UI
     // Atualizando última modificação da nova task
     (task.pending = true), (task.lastChange = +new Date());
 
-    // Removendo tarefa de feitas
-    const newCompleted = completed.filter(
-      (complete) => complete.id !== task.id
-    );
-    setCompleted(newCompleted);
-
-    // Adicionando tarela em pendências
+    // Adicionando tarefa em pendências
     setPendencies((pendencies) => [...pendencies, task]);
-    console.log(pendencies);
+
+    // Adicionando tarefa no banco de dados
+    fire.firestore().collection("tasks").add({
+      id: task.id,
+      name: task.name,
+      pending: task.pending,
+      lastChange: task.lastChange,
+    });
   };
 
   const completeTask = (task) => {
@@ -94,6 +100,24 @@ export default function Home() {
     // Adicionando tarefa em feitas
     setCompleted((completed) => [...completed, task]);
     console.log(pendencies, completed);
+  };
+
+  const updatePendingTask = (task) => {
+    // UI
+    // Atualizando última modificação da nova task
+    (task.pending = true), (task.lastChange = +new Date());
+
+    // Removendo tarefa de feitas
+    const newCompleted = completed.filter(
+      (complete) => complete.id !== task.id
+    );
+    setCompleted(newCompleted);
+
+    // Adicionando tarefa em pendências
+    setPendencies((pendencies) => [...pendencies, task]);
+    console.log(pendencies);
+
+    // Adicionando tarefa no banco de dados
   };
 
   function orderByOldest(a, b) {
@@ -196,7 +220,7 @@ export default function Home() {
                         <CompletedTask
                           key={complete.id}
                           task={complete}
-                          addTask={addTask}
+                          updatePendingTask={updatePendingTask}
                         />
                       ))
                       .sort(orderByNewest)}
@@ -221,3 +245,37 @@ export default function Home() {
     </>
   );
 }
+
+export async function getStaticProps() {
+  let loadTasks = [];
+  try {
+    const res = await fire.firestore().collection("tasks").get();
+    res.forEach(function (doc) {
+      loadTasks.push({
+        id: doc.data().id,
+        name: doc.data().name,
+        pending: doc.data().pending,
+        lastChange: doc.data().lastChange,
+      });
+    });
+  } catch {
+    if (!loadTasks) {
+      return {
+        notFound: true,
+      };
+    }
+  }
+
+  return {
+    props: { loadTasks },
+  };
+}
+
+Home.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  loadTasks: PropTypes.array,
+};
+
+Home.defaultProps = {
+  loadTasks: [],
+};
