@@ -81,6 +81,14 @@ export default function Home() {
     console.log(pendencies);
   };
 
+  const deleteTask = (task) => {
+    // Removendo tarefa de feitas
+    const newPendencies = pendencies.filter(
+      (pending) => pending.id !== task.id
+    );
+    setPendencies(newPendencies);
+  };
+
   const completeTask = (task) => {
     // Atualizando última modificação da nova task
     (task.pending = false), (task.lastChange = +new Date());
@@ -162,6 +170,7 @@ export default function Home() {
                           key={pending.id}
                           task={pending}
                           completeTask={completeTask}
+                          deleteTask={deleteTask}
                         />
                       ))
                       .sort(orderByOldest)}
