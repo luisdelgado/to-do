@@ -64,6 +64,7 @@ const useStyles = makeStyles({
 export default function Home() {
   const [pendencies, setPendencies] = useState([]);
   const [completed, setCompleted] = useState([]);
+  const [allowEdit, setAllowEdit] = useState("");
   const classes = useStyles();
 
   const addTask = (task) => {
@@ -89,6 +90,18 @@ export default function Home() {
     setPendencies(newPendencies);
   };
 
+  const editTask = (task) => {
+    // Removendo tarefa de feitas
+    const newPendencies = pendencies.filter(
+      (pending) => pending.id !== task.id
+    );
+    setPendencies(newPendencies);
+
+    // Adicionando tarela em pendências
+    setPendencies((pendencies) => [...pendencies, task]);
+    console.log(pendencies);
+  };
+
   const completeTask = (task) => {
     // Atualizando última modificação da nova task
     (task.pending = false), (task.lastChange = +new Date());
@@ -105,7 +118,6 @@ export default function Home() {
   };
 
   function orderByOldest(a, b) {
-    console.log(a, b);
     if (a.props.task.lastChange > b.props.task.lastChange) {
       return 1;
     }
@@ -116,7 +128,6 @@ export default function Home() {
   }
 
   function orderByNewest(a, b) {
-    console.log(a, b);
     if (a.props.task.lastChange < b.props.task.lastChange) {
       return 1;
     }
@@ -171,6 +182,9 @@ export default function Home() {
                           task={pending}
                           completeTask={completeTask}
                           deleteTask={deleteTask}
+                          allowEdit={allowEdit}
+                          setAllowEdit={setAllowEdit}
+                          editTask={editTask}
                         />
                       ))
                       .sort(orderByOldest)}
