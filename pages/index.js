@@ -68,6 +68,7 @@ export default function Home({ loadTasks }) {
     loadTasks.filter((task) => task.pending)
   );
   const [completed, setCompleted] = useState([]);
+  const [allowEdit, setAllowEdit] = useState("");
   const classes = useStyles();
 
   const addTask = (task) => {
@@ -85,6 +86,26 @@ export default function Home({ loadTasks }) {
       pending: task.pending,
       lastChange: task.lastChange,
     });
+  };
+
+  const deleteTask = (task) => {
+    // Removendo tarefa de feitas
+    const newPendencies = pendencies.filter(
+      (pending) => pending.id !== task.id
+    );
+    setPendencies(newPendencies);
+  };
+
+  const editTask = (task) => {
+    // Removendo tarefa de feitas
+    const newPendencies = pendencies.filter(
+      (pending) => pending.id !== task.id
+    );
+    setPendencies(newPendencies);
+
+    // Adicionando tarela em pendências
+    setPendencies((pendencies) => [...pendencies, task]);
+    console.log(pendencies);
   };
 
   const completeTask = (task) => {
@@ -121,7 +142,6 @@ export default function Home({ loadTasks }) {
   };
 
   function orderByOldest(a, b) {
-    console.log(a, b);
     if (a.props.task.lastChange > b.props.task.lastChange) {
       return 1;
     }
@@ -132,7 +152,6 @@ export default function Home({ loadTasks }) {
   }
 
   function orderByNewest(a, b) {
-    console.log(a, b);
     if (a.props.task.lastChange < b.props.task.lastChange) {
       return 1;
     }
@@ -186,6 +205,10 @@ export default function Home({ loadTasks }) {
                           key={pending.id}
                           task={pending}
                           completeTask={completeTask}
+                          deleteTask={deleteTask}
+                          allowEdit={allowEdit}
+                          setAllowEdit={setAllowEdit}
+                          editTask={editTask}
                         />
                       ))
                       .sort(orderByOldest)}

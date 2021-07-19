@@ -1,6 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# to-do
+
+Seleção Front-End 2021-3Q: o projeto consiste em implementar uma aplicação de TO-DOs, tanto a interface em HTML e CSS quanto o comportamento em JavaScript.
+
+## Geral
+
+Essa aplicação foi desenvolvida em Next.js. Trata-se de uma estrutura da web de desenvolvimento front-end React de código aberto criada por Vercel que permite funcionalidades como renderização do lado do servidor e geração de sites estáticos para aplicativos da web baseados em React. Para detalhes de execução do projeto vá para seção Getting Started do README.
+
+## Branches
+
+A branch main contém o código da entrega. A branch development foi utilizada para guardar estados concretos durante o desenvolvimento. Infelizmente, não houve tempo de terminar a integração com o back-end Firebase, mas ela foi iniciada. Para acessar essa versão já com integração para criação de atividades pendentes e carregamento das mesmas ao iniciar o sistema, troque para a branch: feature-back_end.
+
+## Back-end
+
+Para ter acesso ao back-end Firebase Cloud Firestore basta enviar os e-mails e as permissões desejadas: editor ou leitor.
 
 ## Getting Started
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 First, run the development server:
 
@@ -11,12 +27,6 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
 ## Learn More
 
