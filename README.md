@@ -14,9 +14,9 @@ A branch main contém o código da entrega. A branch development foi utilizada p
 
 Para ter acesso ao back-end Firebase Cloud Firestore basta enviar os e-mails e as permissões desejadas: editor ou leitor.
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 First, run the development server:
 
