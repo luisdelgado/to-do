@@ -65,7 +65,7 @@ const useStyles = makeStyles({
 
 export default function Home({ loadTasks }) {
   const [pendencies, setPendencies] = useState(
-    loadTasks.filter((task) => task.pending)
+    loadTasks?.filter((task) => task.pending)
   );
   const [completed, setCompleted] = useState([]);
   const [allowEdit, setAllowEdit] = useState("");
@@ -182,7 +182,7 @@ export default function Home({ loadTasks }) {
             <Card className={classes.grid__card}>
               <Grid className={classes.card__grid} item xs={12}>
                 {/* Nenhuma tarefa criada ainda */}
-                {pendencies.length === 0 && completed.length === 0 && (
+                {pendencies?.length === 0 && completed.length === 0 && (
                   <ImageState
                     title="Nenhuma tarefa criada ainda."
                     image="/assets/illustration_empty_state.svg"
@@ -194,7 +194,7 @@ export default function Home({ loadTasks }) {
                 )}
 
                 {/* Tarefas pendentes */}
-                {pendencies.length > 0 && (
+                {pendencies?.length > 0 && (
                   <>
                     <Typography variant="body1">
                       Pendente ({pendencies.length})
