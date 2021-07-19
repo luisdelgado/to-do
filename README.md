@@ -8,7 +8,7 @@ Essa aplicação foi desenvolvida em Next.js. Trata-se de uma estrutura da web d
 
 ## Branches
 
-A branch main contém o código da entrega. A branch development foi utilizada para guardar estados concretos durante o desenvolvimento. Infelizmente, não houve tempo de terminar a integração com o back-end Firebase, mas ela foi iniciada. Para acessar essa versão já com integração para criação de atividades pendentes e carregamento das mesmas ao iniciar o sistema, troque para a branch: feature-back_end.
+Para acessar o projeto no GitHub basta enviar usernames, full names e/ou emails do GitHub. A branch main contém o código da entrega. A branch development foi utilizada para guardar estados concretos durante o desenvolvimento. Infelizmente, não houve tempo de terminar a integração com o back-end Firebase, mas ela foi iniciada. Para acessar essa versão já com integração para criação de atividades pendentes e carregamento das mesmas ao iniciar o sistema, troque para a branch: feature-back_end.
 
 ## Back-end
 
